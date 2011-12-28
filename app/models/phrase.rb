@@ -5,8 +5,9 @@ class Phrase < ActiveRecord::Base
 
 
 
-  def occupy!
+  def occupy!(author)
     update_attribute(:occupied, true)
+    update_attribute(:author, author)
   end
 
 

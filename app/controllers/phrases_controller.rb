@@ -1,11 +1,11 @@
 class PhrasesController < ApplicationController
 
-  respond_to :html, :json
+  respond_to :html, :json , :xml
 
   # GET /phrases
   # GET /phrases.json
   def index
-    @phrases = Phrase.all
+    @phrases = Phrase.order(:phrase_order)
 
     respond_with @phrases
   end
@@ -77,7 +77,7 @@ class PhrasesController < ApplicationController
   def occupy
     @phrase = Phrase.find(params[:id])
     unless @phrase.occupy?
-      @phrase.occupy!
+      @phrase.occupy!(params[:author])
     end
     respond_with @phrase
   end
