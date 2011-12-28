@@ -76,7 +76,7 @@ class PhrasesController < ApplicationController
 
   def occupy
     @phrase = Phrase.find(params[:id])
-    unless @phrase.occupy?
+    unless @phrase.occupied?
       @phrase.occupy!(params[:author])
     end
     respond_with @phrase

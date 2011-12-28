@@ -1,3 +1,85 @@
 // Place all the styles related to the Phrases controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.tiles{
+    overflow:hidden;
+    width:1280px;
+    margin: 20px auto;
+    padding:10px 0 10px 10px;
+    background:url(http://masterofcode.com/images/moc_final_03.png) right bottom no-repeat #d70601;
+    border:1px solid #000;
+    box-shadow:0 0 5px #000;
+    div{
+        position:relative;
+        width: 300px;
+        margin:0 10px 10px 0;
+        float:left;
+        border:5px solid #fff;
+        img{
+            width: 300px;
+            display: block;
+            margin: 0 auto;
+        }
+        span{
+            position:absolute; left:0; bottom:0;
+            display:block;
+            padding:5px 0;
+            width:300px;
+            height:20px;
+            background:rgba(255,255,255,0.4);
+            text-align:center;
+            font-weight:bold;
+            color:#000;
+            text-shadow:0 0 3px #333;
+            font-size:14px;
+            font-family:Arial;
+        }
+    }
+    div.clear {
+        clear:both;
+    }
+}
+
+.comic {
+    font-family: "Comic Sans MS", cursive;
+    display: inline-block;
+    color: #fff;
+    background-color: #000;
+    border: 2px solid #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+    position: relative;
+}
+
+.comic:after {
+    content: "";
+    display: block;
+    background-color: #000;
+    border: 2px solid #fff;
+    border-width: 0 2px 2px 0;
+    width: 24px;
+    height: 24px;
+    box-shadow: 5px 0 5px rgba(0,0,0,.5);
+    position: absolute;
+    bottom: -15px;
+    left: 40px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+
+#upiach-showplace{
+    background-image: url(/upiach.jpg);
+    background-repeat:no-repeat;
+    width: 1280px;
+    height: 1024px;
+    margin: 0 auto;
+    padding: 200px 0 0;
+    img{
+        display:block;
+        margin: 0 auto;
+        width: 300px;
+    }
+}

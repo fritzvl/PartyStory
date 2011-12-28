@@ -3,6 +3,7 @@ PartyStory::Application.routes.draw do
     collection do
       get 'free'
       get 'showcase'
+      get 'upiach'
     end
      member do
       put 'occupy'

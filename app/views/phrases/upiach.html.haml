@@ -1,0 +1,21 @@
+#upiach-showplace
+%audio#audio1{:preload=>"preload"}
+  %source{:src=>"/music/music.mp3"}
+  %source{:src=>"/music/music.ogg"}
+%audio#audio2{:preload=>"preload"}
+  %source{:src=>"/music/music.mp3"}
+  %source{:src=>"/music/music.ogg"}
+
+:javascript
+  UPIACH=true;
+  document.getElementById('audio1').addEventListener('ended', function(){
+  this.currentTime = 0;
+  this.pause();
+  document.getElementById('audio2').play();
+  }, false);
+
+  document.getElementById('audio2').addEventListener('ended', function(){
+  this.currentTime = 0;
+  this.pause();
+  document.getElementById('audio1').play();
+  }, false);

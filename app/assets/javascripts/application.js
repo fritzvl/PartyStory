@@ -31,7 +31,10 @@ $(function() {
                 }
                 $("#phrase_" + id).html(" ");
                 image.appendTo("#phrase_" + id);
-                $("<span></span>").html(data.phrase.caption).appendTo("#phrase_" + id);
+                $("<span></span>").html(data.phrase.author).appendTo("#phrase_" + id);
+                var author = $("#phrase_" + id + "> span");
+                author.html(data.phrase.author);
+
             });
 
         });
@@ -40,12 +43,84 @@ $(function() {
             var id = message;
             if ($("#phrase_" + id).length == 0) {
                 var container = $("<div></div>").attr("class", "tile").attr("id", "phrase_" + id);
+
+                if ($(".tiles > div").length%4 ==0){
+                    container.addClass("clear");
+                }
+
+
+                var image = $("<img/>").attr("src", "/photos/medium/missing.png");
+                image.appendTo(container);
+                var author = $("<span></span>");
+                author.appendTo(container);
                 container.appendTo(".tiles");
                 console.log($("#phrase_" + id));
             }
 
         });
+
+
+        if (UPIACH) {
+            $(function() {
+                $.getJSON("/phrases.json", "", function(data) {
+                        data_length = data.length;
+                        var inter = [];
+                        for (var i = 0; i < data.length; i++) {
+                            var slider = function(i) {
+                                return function() {
+                                    var img = $("<img/>").attr("src", data[i].phrase.photo_url_medium);
+                                    $("#upiach-showplace").html("");
+                                    img.appendTo("#upiach-showplace");
+
+                                }
+                            }
+
+                            inter[i] = setInterval(slider(i), 1000 + i * 100);
+                        }
+
+                        $("#stop").click(
+                            function() {
+                                for (var i = 0; i < data_length; i++) {
+                                    clearInterval(inter[i]);
+                                }
+
+                                console.log("Stopped")
+                            }
+                        );
+
+
+                    }
+                );
+
+
+            });
+            $("#audio1").get(0).play();
+        }
+        ;
+
+        if (!UPIACH) {
+            $.getJSON("/phrases.json", "", function(data) {
+                for (var i = 0; i < data.length; i++) {
+                    var container = $("<div></div>").attr("id", "phrase_" + data[i].phrase.id);
+                    if (i % 4 == 0)
+                        container.addClass("clear");
+
+                    var image = $("<img/>").attr("src", data[i].phrase.photo_url_medium);
+                    console.log(image);
+                    image.appendTo(container);
+
+                    var author = $("<span></span>");
+                    author.html(data[i].phrase.author);
+                    author.appendTo(container);
+
+                    container.appendTo(".tiles");
+                }
+            });
+        }
+
+
     }
-);
+)
+    ;
 
 

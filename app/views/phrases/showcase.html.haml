@@ -1,8 +1,5 @@
 .tiles
-  -@phrases.each do |phrase|
-    .tile{:id=>"phrase_#{phrase.id}"}
-      -if phrase.photo?
-        =image_tag phrase.photo.url(:medium)
-        %span=phrase.caption
+:javascript
+  UPIACH=false;
 
 

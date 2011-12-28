@@ -1,5 +1,5 @@
 collection @phrases
-attributes :id, :author, :caption, :order
+attributes :id, :author, :caption, :order, :occupied
 node :photo_url_thumb do |phrase|
   phrase.photo.url(:thumb)
 end
